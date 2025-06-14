@@ -9,15 +9,17 @@ namespace pebeo.Models
         public class Warga : Akun
         {
             public string NamaLengkap { get; set; }
-            //public string Alamat { get; set; }
+       
             public string NoTelepon { get; set; }
+            public int noRumah { get; set; }
 
-            public Warga(string username, string password, string nama, string noTelp)
+        public Warga(string username, string password, string nama, string noTelp, int norumah)
                 : base(username, password)
             {
                 NamaLengkap = nama;
-                //Alamat = alamat;
+               
                 NoTelepon = noTelp;
+                noRumah = norumah;
             }
 
             //public override bool Login(string username, string password)

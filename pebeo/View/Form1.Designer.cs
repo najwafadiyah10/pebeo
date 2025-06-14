@@ -35,6 +35,7 @@
             pictureBox4 = new PictureBox();
             tbusername = new TextBox();
             tbpassword = new TextBox();
+            btnloginn = new Button();
             ((System.ComponentModel.ISupportInitialize)pbbackground).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
@@ -48,7 +49,7 @@
             btnlogin.FlatAppearance.BorderSize = 0;
             btnlogin.FlatStyle = FlatStyle.Flat;
             btnlogin.ForeColor = Color.Transparent;
-            btnlogin.Location = new Point(472, 477);
+            btnlogin.Location = new Point(881, 176);
             btnlogin.Name = "btnlogin";
             btnlogin.Size = new Size(140, 71);
             btnlogin.TabIndex = 1;
@@ -68,7 +69,7 @@
             linkregis.TabIndex = 3;
             linkregis.TabStop = true;
             linkregis.Text = "Register";
-            linkregis.LinkClicked += this.linkregis_LinkClicked;
+            linkregis.LinkClicked += linkregis_LinkClicked;
             // 
             // pbbackground
             // 
@@ -111,6 +112,16 @@
             tbpassword.Size = new Size(369, 27);
             tbpassword.TabIndex = 12;
             // 
+            // btnloginn
+            // 
+            btnloginn.Location = new Point(466, 492);
+            btnloginn.Name = "btnloginn";
+            btnloginn.Size = new Size(152, 59);
+            btnloginn.TabIndex = 13;
+            btnloginn.Text = "login";
+            btnloginn.UseVisualStyleBackColor = true;
+            btnloginn.Click += btnloginn_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -118,6 +129,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1128, 716);
+            Controls.Add(btnloginn);
             Controls.Add(tbpassword);
             Controls.Add(tbusername);
             Controls.Add(linkregis);
@@ -140,5 +152,6 @@
         private PictureBox pictureBox4;
         private TextBox tbusername;
         private TextBox tbpassword;
+        private Button btnloginn;
     }
 }

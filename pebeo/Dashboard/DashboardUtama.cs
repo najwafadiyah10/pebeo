@@ -31,5 +31,10 @@ namespace pebeo.Dashboard
             login.Show();
             this.Hide();
         }
+
+        private void DashboardUtama_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

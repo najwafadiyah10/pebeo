@@ -16,7 +16,7 @@ namespace pebeo.View
 {
     public partial class Register : Form
     {
-        public Register()
+        public Register() 
         {
             InitializeComponent();
         }
@@ -38,7 +38,9 @@ namespace pebeo.View
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            Form1 login = new Form1();
+            login.Show();
+            this.Hide();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -48,27 +50,36 @@ namespace pebeo.View
 
         private void btnregister_Click(object sender, EventArgs e)
         {
-            var controller = new AkunController();
+            // Ambil input user
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+            string nama = txtNama.Text;
+            string noTelp = txtTelepon.Text;
 
-            var warga = new Warga(
-                //id: 0, // ID akan otomatis oleh DB
-                username: txtUsername.Text,
-                password: txtPassword.Text,
-                nama: txtNama.Text,
-                //alamat: txtAlamat.Text,
-                noTelp: txtTelepon.Text
-            );
+            // Kirim data ke form RegisterAlamat
+            //RegisterAlamat formAlamat = new RegisterAlamat(username, password, nama, noTelp);
+            //formAlamat.Show();
+            //this.Hide();
 
-            if (controller.RegisterWarga(warga))
-            {
-                MessageBox.Show("Registrasi berhasil!");
-                this.Close(); // atau buka LoginForm
-            }
-            else
-            {
-                MessageBox.Show("Gagal registrasi.");
-            }
+            RegisterAlamat registeralamat = new RegisterAlamat();
+            registeralamat.Show();
+            this.Hide();
 
+
+
+            //if (controller.RegisterWarga(warga))
+            //{
+            //    MessageBox.Show("Registrasi berhasil!");
+            //    this.Close(); // atau buka LoginForm
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Gagal registrasi.");
+            //}
+        }
+
+        private void Register_Load(object sender, EventArgs e)
+        {
 
         }
     }

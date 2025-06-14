@@ -12,7 +12,7 @@ namespace pebeo.Controller
 {
     public class Database
     {
-        private static string connString = "Host=localhost;Username=postgres;Password=jungkook;Database=projekpbo";
+        public static string connString = "Host=localhost;Username=postgres;Password=jungkook;Database=projekpbo";
 
         public static NpgsqlConnection GetConnection()
         {

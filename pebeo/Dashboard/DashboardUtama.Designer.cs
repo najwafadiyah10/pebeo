@@ -101,6 +101,7 @@
             Controls.Add(pictureBox1);
             Name = "DashboardUtama";
             Text = "DashboardUtama";
+            Load += DashboardUtama_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

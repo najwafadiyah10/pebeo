@@ -41,12 +41,13 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackColor = Color.White;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(-39, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(1154, 741);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
@@ -88,16 +89,17 @@
             // 
             // btnregister
             // 
+            btnregister.AutoEllipsis = true;
             btnregister.BackColor = Color.Transparent;
             btnregister.BackgroundImage = (Image)resources.GetObject("btnregister.BackgroundImage");
             btnregister.BackgroundImageLayout = ImageLayout.Zoom;
             btnregister.FlatAppearance.BorderSize = 0;
             btnregister.FlatStyle = FlatStyle.Flat;
             btnregister.ForeColor = Color.Transparent;
-            btnregister.Location = new Point(462, 601);
+            btnregister.Location = new Point(429, 593);
             btnregister.Name = "btnregister";
-            btnregister.Size = new Size(143, 48);
-            btnregister.TabIndex = 5;
+            btnregister.Size = new Size(174, 54);
+            btnregister.TabIndex = 1;
             btnregister.TextImageRelation = TextImageRelation.TextAboveImage;
             btnregister.UseVisualStyleBackColor = false;
             btnregister.Click += btnregister_Click;
@@ -133,6 +135,7 @@
             Controls.Add(pictureBox1);
             Name = "Register";
             Text = "Register";
+            Load += Register_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

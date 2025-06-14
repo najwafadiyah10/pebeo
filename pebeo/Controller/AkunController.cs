@@ -33,7 +33,9 @@ namespace SampahApp.Controllers
                                 password: dbPass,
                                 nama: reader.GetString(reader.GetOrdinal("nama")),
                                 //alamat: reader.GetString(reader.GetOrdinal("alamat")),
-                                noTelp: reader.GetString(reader.GetOrdinal("no_telp"))
+                                noTelp: reader.GetString(reader.GetOrdinal("no_telp")),
+                                norumah: reader.GetInt32(reader.GetOrdinal("id_nomor_rumah"))
+
                             );
 
                             if (warga.CekPassword(password))
@@ -71,14 +73,15 @@ namespace SampahApp.Controllers
                     conn.Open();
 
                     var cmd = new NpgsqlCommand(@"
-                    INSERT INTO warga (username, password, nama, no_telp)
-                    VALUES (@username, @password, @nama, @no_telp)", conn);
+                    INSERT INTO warga (username, password, nama, no_telp, id_nomor_rumah)
+                    VALUES (@username, @password, @nama, @no_telp, @id_nomor_rumah)", conn);
 
                     cmd.Parameters.AddWithValue("username", warga.Username);
                     cmd.Parameters.AddWithValue("password", warga.GetPassword()); // Jika kamu pakai getter
                     cmd.Parameters.AddWithValue("nama", warga.NamaLengkap);
                     //cmd.Parameters.AddWithValue("a", warga.Alamat);
                     cmd.Parameters.AddWithValue("no_telp", warga.NoTelepon);
+                    cmd.Parameters.AddWithValue("id_nomor_rumah", warga.noRumah);
 
                     return cmd.ExecuteNonQuery() > 0;
                 }
