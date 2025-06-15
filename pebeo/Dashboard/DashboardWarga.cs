@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using pebeo.User_Control;
+
 
 namespace pebeo.Dashboard
 {
@@ -31,5 +33,30 @@ namespace pebeo.Dashboard
         {
 
         }
+
+        private void btnlihatjadwal_Click(object sender, EventArgs e)
+        {
+        
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        public void ShowControl(UserControl uc)
+        {
+            panel2.Controls.Clear();      // kosongkan panel2
+            uc.Dock = DockStyle.Fill;     // biar full
+            panel2.Controls.Add(uc);      // tambahkan ke panel2
+            uc.BringToFront();            // tampilkan paling depan
+        }
+
+        private void btnsetorjadwal_Click(object sender, EventArgs e)
+        {
+            Jadwal jadwal = new Jadwal();  // Buat instance user control
+            ShowControl(jadwal);
+        }
+    
     }
 }

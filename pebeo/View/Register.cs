@@ -61,9 +61,10 @@ namespace pebeo.View
             //formAlamat.Show();
             //this.Hide();
 
-            RegisterAlamat registeralamat = new RegisterAlamat();
-            registeralamat.Show();
+            var registerAlamat = new RegisterAlamat(username, password, nama, noTelp);
+            registerAlamat.Show();
             this.Hide();
+
 
 
 

@@ -5,6 +5,7 @@ using pebeo.Dashboard;
 using Microsoft.VisualBasic.Logging;
 using pebeo.View;
 using Npgsql;
+using static pebeo.User_Control.Jadwal;
 
 namespace pebeo
 {
@@ -161,32 +162,37 @@ namespace pebeo
             string username = tbusername.Text;
             string password = tbpassword.Text;
 
+
             try
             {
                 using (var conn = new NpgsqlConnection(Database.connString))
                 {
                     conn.Open();
 
-                    // Cek apakah user ada di tabel warga
-                    string queryWarga = "SELECT * FROM warga WHERE username = @username AND password = @password";
-                    using (var cmd = new NpgsqlCommand(queryWarga, conn))
+                    string query = "SELECT id_warga FROM warga WHERE username = @username AND password = @password";
+                    using (var cmd = new NpgsqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@username", username);
                         cmd.Parameters.AddWithValue("@password", password);
 
-                        using (var reader = cmd.ExecuteReader())
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null)
                         {
-                            if (reader.HasRows)
-                            {
-                                // Login sebagai warga
-                                MessageBox.Show("Login berhasil sebagai WARGA");
-                                DashboardWarga formWarga = new DashboardWarga();
-                                formWarga.Show();
-                                this.Hide();
-                                return;
-                            }
+                            Session.LoggedWargaId = Convert.ToInt32(result);
+                            MessageBox.Show("Login berhasil sebagai WARGA");
+
+                            DashboardWarga form = new DashboardWarga();
+                            form.Show();
+                            this.Hide();
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Username atau password salah!");
                         }
                     }
+
 
                     // Cek apakah user ada di tabel pengolah
                     string queryPengolah = "SELECT * FROM pengolah WHERE username = @username AND password = @password";
@@ -218,5 +224,11 @@ namespace pebeo
                 MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        //public static class Session
+        //{
+        //    public static int IdWarga { get; set; } // simpan id_warga login
+        //}
+
     }
 }

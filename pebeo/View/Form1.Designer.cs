@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            btnlogin = new Button();
             linkregis = new LinkLabel();
             pbbackground = new PictureBox();
             pictureBox4 = new PictureBox();
@@ -39,23 +38,6 @@
             ((System.ComponentModel.ISupportInitialize)pbbackground).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
-            // 
-            // btnlogin
-            // 
-            btnlogin.AutoEllipsis = true;
-            btnlogin.BackColor = Color.Transparent;
-            btnlogin.BackgroundImage = Properties.Resources.Frame_2;
-            btnlogin.BackgroundImageLayout = ImageLayout.Zoom;
-            btnlogin.FlatAppearance.BorderSize = 0;
-            btnlogin.FlatStyle = FlatStyle.Flat;
-            btnlogin.ForeColor = Color.Transparent;
-            btnlogin.Location = new Point(881, 176);
-            btnlogin.Name = "btnlogin";
-            btnlogin.Size = new Size(140, 71);
-            btnlogin.TabIndex = 1;
-            btnlogin.TextImageRelation = TextImageRelation.TextAboveImage;
-            btnlogin.UseVisualStyleBackColor = false;
-            btnlogin.Click += button1_Click;
             // 
             // linkregis
             // 
@@ -114,7 +96,7 @@
             // 
             // btnloginn
             // 
-            btnloginn.Location = new Point(466, 492);
+            btnloginn.Location = new Point(472, 495);
             btnloginn.Name = "btnloginn";
             btnloginn.Size = new Size(152, 59);
             btnloginn.TabIndex = 13;
@@ -133,7 +115,6 @@
             Controls.Add(tbpassword);
             Controls.Add(tbusername);
             Controls.Add(linkregis);
-            Controls.Add(btnlogin);
             Controls.Add(pbbackground);
             Controls.Add(pictureBox4);
             Name = "Form1";
@@ -146,7 +127,6 @@
         }
 
         #endregion
-        private Button btnlogin;
         private LinkLabel linkregis;
         private PictureBox pbbackground;
         private PictureBox pictureBox4;
