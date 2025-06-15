@@ -36,7 +36,7 @@ namespace pebeo.Dashboard
 
         private void btnlihatjadwal_Click(object sender, EventArgs e)
         {
-        
+
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -57,6 +57,11 @@ namespace pebeo.Dashboard
             Jadwal jadwal = new Jadwal();  // Buat instance user control
             ShowControl(jadwal);
         }
-    
+
+        private void btncek_Click(object sender, EventArgs e)
+        {
+            LihatStatuscs lihatStatuscs = new LihatStatuscs();
+            ShowControl(lihatStatuscs);
+        }
     }
 }

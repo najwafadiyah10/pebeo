@@ -57,6 +57,7 @@
             btncek.TabIndex = 2;
             btncek.Text = "CEK STATUS SAMPAH";
             btncek.UseVisualStyleBackColor = true;
+            btncek.Click += btncek_Click;
             // 
             // btnsetorjadwal
             // 
