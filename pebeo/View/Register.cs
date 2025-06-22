@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using pebeo.Controller;
 
 namespace pebeo.View
 {
@@ -50,20 +51,84 @@ namespace pebeo.View
 
         private void btnregister_Click(object sender, EventArgs e)
         {
-            // Ambil input user
+
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             string nama = txtNama.Text;
             string noTelp = txtTelepon.Text;
 
-            // Kirim data ke form RegisterAlamat
-            //RegisterAlamat formAlamat = new RegisterAlamat(username, password, nama, noTelp);
-            //formAlamat.Show();
-            //this.Hide();
+            // Jangan simpan ke database di sini!
+            // Langsung lanjut ke form input alamat
+
+            if (string.IsNullOrWhiteSpace(username) ||
+            string.IsNullOrWhiteSpace(password) ||
+            string.IsNullOrWhiteSpace(nama) ||
+            string.IsNullOrWhiteSpace(noTelp))
+            {
+                MessageBox.Show("Semua data wajib diisi!");
+                return;
+            }
+
+            if (nama.Any(char.IsDigit))
+            {
+                MessageBox.Show("Nama tidak boleh mengandung angka!");
+                return;
+            }
+
+            // Validasi: password harus mengandung minimal satu angka
+            if (!password.Any(char.IsDigit))
+            {
+                MessageBox.Show("Password harus mengandung minimal satu angka!");
+                return;
+            }
+
+            // Validasi: no HP tidak boleh mengandung huruf
+            if (noTelp.Any(char.IsLetter))
+            {
+                MessageBox.Show("Nomor HP hanya boleh berisi angka!");
+                return;
+            }
 
             var registerAlamat = new RegisterAlamat(username, password, nama, noTelp);
             registerAlamat.Show();
             this.Hide();
+
+            //string username = txtUsername.Text;
+            //string password = txtPassword.Text;
+            //string nama = txtNama.Text;
+            //string noTelp = txtTelepon.Text;
+
+            //bool sukses = WargaController.RegisterWarga(username, password, nama, noTelp);
+
+            //if (sukses)
+            //{
+            //    MessageBox.Show("Registrasi berhasil!");
+
+            //    // Lanjut ke alamat
+            //    var registerAlamat = new RegisterAlamat(username, password, nama, noTelp);
+            //    registerAlamat.Show();
+            //    this.Hide();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Registrasi gagal. Silakan coba lagi.");
+            //}
+        }
+            
+            // Ambil input user
+            //string username = txtUsername.Text;
+            //string password = txtPassword.Text;
+            //string nama = txtNama.Text;
+            //string noTelp = txtTelepon.Text;
+
+            //// Kirim data ke form RegisterAlamat
+            ////RegisterAlamat formAlamat = new RegisterAlamat(username, password, nama, noTelp);
+            ////formAlamat.Show();
+            ////this.Hide();
+
+            //var registerAlamat = new RegisterAlamat(username, password, nama, noTelp);
+            //registerAlamat.Show();
+            //this.Hide();
 
 
 
@@ -77,7 +142,7 @@ namespace pebeo.View
             //{
             //    MessageBox.Show("Gagal registrasi.");
             //}
-        }
+        
 
         private void Register_Load(object sender, EventArgs e)
         {

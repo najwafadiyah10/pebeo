@@ -41,12 +41,12 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = Color.White;
+            pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-39, 12);
+            pictureBox1.Location = new Point(-39, 1);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1154, 741);
+            pictureBox1.Size = new Size(1154, 752);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -96,11 +96,13 @@
             btnregister.FlatAppearance.BorderSize = 0;
             btnregister.FlatStyle = FlatStyle.Flat;
             btnregister.ForeColor = Color.Transparent;
-            btnregister.Location = new Point(429, 593);
+            btnregister.Location = new Point(410, 591);
             btnregister.Name = "btnregister";
-            btnregister.Size = new Size(174, 54);
+            btnregister.Size = new Size(197, 63);
             btnregister.TabIndex = 1;
+            btnregister.Text = "BERIKUTNYA";
             btnregister.TextImageRelation = TextImageRelation.TextAboveImage;
+            btnregister.UseMnemonic = false;
             btnregister.UseVisualStyleBackColor = false;
             btnregister.Click += btnregister_Click;
             // 
@@ -125,6 +127,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1113, 749);
             Controls.Add(linkLabel1);
             Controls.Add(btnregister);
@@ -133,6 +137,7 @@
             Controls.Add(txtUsername);
             Controls.Add(txtNama);
             Controls.Add(pictureBox1);
+            DoubleBuffered = true;
             Name = "Register";
             Text = "Register";
             Load += Register_Load;

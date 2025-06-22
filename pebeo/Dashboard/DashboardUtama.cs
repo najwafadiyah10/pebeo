@@ -36,5 +36,10 @@ namespace pebeo.Dashboard
         {
 
         }
+
+        private void linkregis_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }

@@ -59,7 +59,7 @@ namespace pebeo.User_Control
                      ss.id_setor,
                      w.nama,
                      j.hari || ' ' || j.jam AS jadwal,
-                     js.nama,
+                     js.nama as Jenis_Sampah,
                      ss.deskripsi, nr.nomor_rumah, 
 	                 ja.nama_jalan||', '||d.nama_dusun as Alamat
                      FROM setor_sampah ss

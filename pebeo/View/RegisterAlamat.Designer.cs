@@ -64,9 +64,10 @@
             btnregister.BackColor = Color.Transparent;
             btnregister.BackgroundImage = (Image)resources.GetObject("btnregister.BackgroundImage");
             btnregister.BackgroundImageLayout = ImageLayout.Zoom;
+            btnregister.FlatAppearance.BorderSize = 0;
             btnregister.FlatStyle = FlatStyle.Flat;
             btnregister.ForeColor = Color.Transparent;
-            btnregister.Location = new Point(420, 459);
+            btnregister.Location = new Point(434, 439);
             btnregister.Name = "btnregister";
             btnregister.Size = new Size(137, 46);
             btnregister.TabIndex = 5;
@@ -94,6 +95,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1070, 656);
             Controls.Add(cbnorumah);
             Controls.Add(cbjalan);

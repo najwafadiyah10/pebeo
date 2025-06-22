@@ -20,36 +20,6 @@ namespace pebeo.User_Control
             LoadData(this, EventArgs.Empty);
         }
 
-
-
-
-
-
-
-
-    private void SetupDataGridView()
-    {
-            // Hapus dulu kolom status lama jika ada
-            if (dataGridView1.Columns.Contains("status"))
-                dataGridView1.Columns.Remove("status");
-
-            // Buat ComboBox column
-            DataGridViewComboBoxColumn statusColumn = new DataGridViewComboBoxColumn();
-            statusColumn.Name = "status";
-            statusColumn.HeaderText = "Status";
-            statusColumn.DataPropertyName = "id_status"; // kolom dari database
-            statusColumn.DisplayMember = "Value";
-            statusColumn.ValueMember = "Key";
-
-            // Tambahkan pilihan status
-            statusColumn.Items.Add(new KeyValuePair<int, string>(1, "Belum"));
-            statusColumn.Items.Add(new KeyValuePair<int, string>(2, "Sudah"));
-
-            dataGridView1.Columns.Add(statusColumn);
-    }
-
-
-
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -73,16 +43,6 @@ namespace pebeo.User_Control
                     MessageBox.Show("Gagal update status: " + ex.Message);
                 }
             }
-        
-            //if (dataGridView1.Columns[e.ColumnIndex].Name == "status")
-            //{
-            //    int idSetor = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["id_setor"].Value);
-            //    var selectedStatus = (KeyValuePair<int, string>)dataGridView1.Rows[e.RowIndex].Cells["status"].Value;
-
-            //    int idStatusBaru = selectedStatus.Key;
-
-            //    UpdateStatusKeDatabase(idSetor, idStatusBaru);
-            //}
         }
 
 
@@ -99,44 +59,14 @@ namespace pebeo.User_Control
                 {
                     cmd.Parameters.AddWithValue("@id_setor", idSetor);
                     cmd.Parameters.AddWithValue("@status", idStatus);
-                    cmd.ExecuteNonQuery();
+
+                    int rowsAffected = cmd.ExecuteNonQuery(); // debug log opsional
+                    Console.WriteLine($"Updated rows: {rowsAffected}");
                 }
             }
         }
-        //    using (var conn = new NpgsqlConnection(Database.connString))
-        //    {
-        //        conn.Open();
-        //        string query = "UPDATE setor_sampah SET id_status = @status WHERE id_setor = @id";
 
-        //        using (var cmd = new NpgsqlCommand(query, conn))
-        //        {
-        //            cmd.Parameters.AddWithValue("@id", idSetor);
-        //            cmd.Parameters.AddWithValue("@status", idStatus);
-        //            cmd.ExecuteNonQuery();
-        //        }
-        //    }
-        //}
-        //private void UpdateStatusKeDatabase(int idSetor, int idStatus)
-
-        //{
-        //    string connString = Database.connString;
-
-        //    using (var conn = new Npgsql.NpgsqlConnection(connString))
-        //    {
-        //        conn.Open();
-        //        string query = "UPDATE setor_sampah SET id_status = 2 WHERE id_setor = @id";
-
-        //        using (var cmd = new Npgsql.NpgsqlCommand(query, conn))
-        //        {
-        //            cmd.Parameters.AddWithValue("@id", idSetor);
-        //            cmd.ExecuteNonQuery();
-        //        }
-        //    }
-
-        //    MessageBox.Show("Status berhasil diperbarui!");
-        //    LoadData(); // reload agar tampilan status ikut berubah
-        //}
-
+        
 
 
         private void LoadData()
@@ -215,101 +145,16 @@ namespace pebeo.User_Control
                                 dataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit);
                             }
                         };
-
-
-                        //    var dtStatus = new DataTable();
-                        //    using (var statusCmd = new NpgsqlCommand("SELECT id_status, status FROM status_pengambilan", conn))
-                        //    {
-                        //        var statusAdapter = new NpgsqlDataAdapter(statusCmd);
-                        //        statusAdapter.Fill(dtStatus);
-                        //    }
-
-                        //    // Pakai ini untuk comboBoxColumn:
-                        //    comboBoxColumn.DataSource = dtStatus;
-
-
-
-                        //    // Tambahkan kolom ComboBox yang bind ke database
-                        //    DataGridViewComboBoxColumn comboBoxColumn = new DataGridViewComboBoxColumn();
-                        //    comboBoxColumn.HeaderText = "Edit Status";
-                        //    comboBoxColumn.Name = "statusComboBox";
-                        //    comboBoxColumn.DataSource = statusTable;
-                        //    comboBoxColumn.DisplayMember = "status";
-                        //    comboBoxColumn.ValueMember = "id_status";
-                        //    comboBoxColumn.DataPropertyName = "id_status"; // penting agar isi otomatis
-                        //    dataGridView1.Columns.Add(comboBoxColumn);
-                        //}
-
                     }
                 }
             }
-
-
-
-
-
-            //using (var cmd = new NpgsqlCommand(query, conn))
-            //{
-            //    var adapter = new NpgsqlDataAdapter(cmd);
-            //    var dt = new DataTable();
-            //    adapter.Fill(dt);
-            //    dataGridView1.DataSource = dt;
-
-            //    if (!dataGridView1.Columns.Contains("statusComboBox"))
-            //    {
-            //        DataGridViewComboBoxColumn comboBoxColumn = new DataGridViewComboBoxColumn();
-            //        comboBoxColumn.HeaderText = "Edit Status";
-            //        comboBoxColumn.Name = "statusComboBox";
-            //        comboBoxColumn.Items.AddRange("Belum Diambil", "Sudah Diambil");
-            //        dataGridView1.Columns.Add(comboBoxColumn);
-
-            //        foreach (DataGridViewRow row in dataGridView1.Rows)
-            //        {
-            //            if (row.Cells["status"] != null && row.Cells["statusComboBox"] != null)
-            //            {
-            //                row.Cells["statusComboBox"].Value = row.Cells["status"].Value.ToString();
-
-
-
-
-
 
             catch (Exception ex)
             {
                 MessageBox.Show("Gagal memuat data: " + ex.Message);
             }
         }
-
-
-
-
-
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "statusComboBox")
-            {
-                var idSetor = dataGridView1.Rows[e.RowIndex].Cells["id_setor"].Value;
-                var newStatusId = dataGridView1.Rows[e.RowIndex].Cells["statusComboBox"].Value;
-
-                using (var conn = new NpgsqlConnection(Database.connString))
-                {
-                    conn.Open();
-                    using (var cmd = new NpgsqlCommand("UPDATE setor_sampah SET id_status = @status WHERE id_setor = @id", conn))
-                    {
-                        cmd.Parameters.AddWithValue("@status", newStatusId);
-                        cmd.Parameters.AddWithValue("@id", idSetor);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-
-                // Optional: Update status teks biar tampilan ikut berubah
-                string statusText = GetStatusTextById(Convert.ToInt32(newStatusId));
-                dataGridView1.Rows[e.RowIndex].Cells["status"].Value = statusText;
-            }
-        }
-            
-            private string GetStatusTextById(int id)
+        private string GetStatusTextById(int id)
         {
             switch (id)
             {
@@ -318,26 +163,6 @@ namespace pebeo.User_Control
                 default: return "-";
             }
         }
-        
-
-        // Panggil fungsi update
-
-        //dataGridView1.DataBindingComplete += DataGridView1_DataBindingComplete;
-        //    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-        //    dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
-        //    dataGridView1.Dock = DockStyle.Fill;
-        //    this.Controls.Add(dataGridView1);
-        //    dataGridView1.Columns["status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-        //}
-        // atau manual
-
-        //if (dataGridView1.Columns[e.ColumnIndex].Name == "btnUpdate" && e.RowIndex >= 0)
-        //{
-        //    int idSetor = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["id_setor"].Value);
-
-        //    // Update ke database
-        //    UpdateStatusKeDatabase(idSetor, idStatus);
-        //}
         private void DataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -357,27 +182,26 @@ namespace pebeo.User_Control
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
+                // Pastikan baris tidak kosong (baris baru user)
                 if (row.IsNewRow) continue;
 
-                string selectedStatus = row.Cells["statusComboBox"].Value?.ToString();
-                if (string.IsNullOrEmpty(selectedStatus)) continue;
+                // Ambil nilai id_setor dari kolom tersembunyi atau visible
+                object idSetorObj = row.Cells["id_setor"].Value;
+                object statusComboObj = row.Cells["statuscombobox"].Value;
 
-                int idSetor = Convert.ToInt32(row.Cells["id_setor"].Value);
-                int idStatus = (selectedStatus == "Sudah Diambil") ? 2 : 1; // 1 = Belum, 2 = Sudah
+                if (idSetorObj == null || statusComboObj == null) continue;
 
+                int idSetor = Convert.ToInt32(idSetorObj);
+                int idStatus = Convert.ToInt32(statusComboObj); // nilai Value dari ComboBox
+
+                // Panggil method update
                 UpdateStatusKeDatabase(idSetor, idStatus);
             }
 
-            MessageBox.Show("Status berhasil diperbarui.");
-            LoadData(this, EventArgs.Empty); // refresh DataGridView
+            // Refresh data setelah update
+            LoadData();
+            MessageBox.Show("Status berhasil diperbarui!", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-    }
-}
-    
-
-
-
-
         
-    
-
+    }
+    }

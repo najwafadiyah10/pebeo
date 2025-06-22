@@ -30,6 +30,7 @@
         {
             dataGridView1 = new DataGridView();
             btnhapus = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -52,10 +53,21 @@
             btnhapus.UseVisualStyleBackColor = true;
             btnhapus.Click += btnhapus_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(57, 70);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 2;
+            button1.Text = "tambah";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // JadwalPengolah
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button1);
             Controls.Add(btnhapus);
             Controls.Add(dataGridView1);
             Name = "JadwalPengolah";
@@ -69,5 +81,6 @@
 
         private DataGridView dataGridView1;
         private Button btnhapus;
+        private Button button1;
     }
 }

@@ -143,7 +143,47 @@ namespace pebeo.User_Control
             }
         }
 
-        private void btntambah_Click(object sender, EventArgs e)
+        //private void btntambah_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        using (var conn = new NpgsqlConnection(Database.connString))
+        //        {
+        //            conn.Open();
+        //            foreach (DataGridViewRow row in dataGridView1.Rows)
+        //            {
+        //                if (row.IsNewRow) continue;
+
+
+        //                // Karena View, kolom id_jadwal mungkin tidak bisa dideteksi sebagai null, jadi sebaiknya cek dengan cara lain
+        //                if (row.Cells["id_jadwal"].Value == null || string.IsNullOrEmpty(row.Cells["id_jadwal"].Value.ToString()))
+        //                {
+        //                    string hari = row.Cells["hari"].Value?.ToString();
+        //                    string jamStr = row.Cells["jam"].Value?.ToString();
+
+        //                    if (!string.IsNullOrEmpty(hari) && !string.IsNullOrEmpty(jamStr))
+        //                    {
+        //                        using (var cmd = new NpgsqlCommand("INSERT INTO jadwal_pengambilan (hari, jam) VALUES (@hari, @jam)", conn))
+        //                        {
+        //                            cmd.Parameters.AddWithValue("@hari", hari);
+        //                            cmd.Parameters.AddWithValue("@jam", TimeSpan.Parse(jamStr));
+        //                            cmd.ExecuteNonQuery();
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+
+        //        MessageBox.Show("Data berhasil ditambahkan.");
+        //        LoadData(); // reload dari View agar tetap urut
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Gagal menyimpan data: " + ex.Message);
+        //    }
+        //}
+
+        private void button1_Click(object sender, EventArgs e)
         {
             try
             {
@@ -154,8 +194,6 @@ namespace pebeo.User_Control
                     {
                         if (row.IsNewRow) continue;
 
-
-                        // Karena View, kolom id_jadwal mungkin tidak bisa dideteksi sebagai null, jadi sebaiknya cek dengan cara lain
                         if (row.Cells["id_jadwal"].Value == null || string.IsNullOrEmpty(row.Cells["id_jadwal"].Value.ToString()))
                         {
                             string hari = row.Cells["hari"].Value?.ToString();
@@ -166,7 +204,7 @@ namespace pebeo.User_Control
                                 using (var cmd = new NpgsqlCommand("INSERT INTO jadwal_pengambilan (hari, jam) VALUES (@hari, @jam)", conn))
                                 {
                                     cmd.Parameters.AddWithValue("@hari", hari);
-                                    cmd.Parameters.AddWithValue("@jam", TimeSpan.Parse(jamStr));
+                                    cmd.Parameters.AddWithValue("@jam", jamStr); // <-- pakai string langsung
                                     cmd.ExecuteNonQuery();
                                 }
                             }
@@ -182,8 +220,8 @@ namespace pebeo.User_Control
                 MessageBox.Show("Gagal menyimpan data: " + ex.Message);
             }
         }
-
     }
-}
+    }
+
 
 

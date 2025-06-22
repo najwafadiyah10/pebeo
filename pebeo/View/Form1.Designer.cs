@@ -96,12 +96,18 @@
             // 
             // btnloginn
             // 
-            btnloginn.Location = new Point(472, 495);
+            btnloginn.BackColor = Color.Transparent;
+            btnloginn.BackgroundImage = (Image)resources.GetObject("btnloginn.BackgroundImage");
+            btnloginn.BackgroundImageLayout = ImageLayout.Zoom;
+            btnloginn.FlatAppearance.BorderSize = 0;
+            btnloginn.FlatStyle = FlatStyle.Flat;
+            btnloginn.ForeColor = Color.Transparent;
+            btnloginn.Location = new Point(463, 489);
             btnloginn.Name = "btnloginn";
-            btnloginn.Size = new Size(152, 59);
+            btnloginn.Size = new Size(152, 60);
             btnloginn.TabIndex = 13;
-            btnloginn.Text = "login";
-            btnloginn.UseVisualStyleBackColor = true;
+            btnloginn.Text = "LOGIN";
+            btnloginn.UseVisualStyleBackColor = false;
             btnloginn.Click += btnloginn_Click;
             // 
             // Form1

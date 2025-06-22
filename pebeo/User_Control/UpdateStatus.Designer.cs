@@ -41,15 +41,15 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(628, 372);
             dataGridView1.TabIndex = 0;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            //dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // button1
             // 
-            button1.Location = new Point(400, 454);
+            button1.Location = new Point(557, 446);
             button1.Name = "button1";
             button1.Size = new Size(94, 29);
             button1.TabIndex = 1;
-            button1.Text = "button1";
+            button1.Text = "UPDATE";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 

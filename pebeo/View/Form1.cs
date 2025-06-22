@@ -189,7 +189,7 @@ namespace pebeo
                         }
                         else
                         {
-                            MessageBox.Show("Username atau password salah!");
+                            //MessageBox.Show("Username atau password salah!");
                         }
                     }
 

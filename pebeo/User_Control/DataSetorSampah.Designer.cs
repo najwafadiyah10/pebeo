@@ -38,7 +38,7 @@
             dataGridView1.Location = new Point(15, 34);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1028, 468);
+            dataGridView1.Size = new Size(645, 468);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -48,7 +48,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(dataGridView1);
             Name = "DataSetorSampah";
-            Size = new Size(1064, 615);
+            Size = new Size(687, 615);
             Load += DataSetorSampah_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
