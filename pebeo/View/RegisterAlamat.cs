@@ -37,15 +37,7 @@ namespace pebeo.View
 
         private void cbrtrw_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //    if (cbdusun.SelectedIndex >= 0)
-            //    {
-            //        int id_dusun = Convert.ToInt32(cbdusun);
-            //        cbjalan.DataSource = AlamatController.GetJalanByDusun(id_dusun );
-            //        cbjalan.DisplayMember = "nama_jalan";
-            //        cbjalan.ValueMember = "id_jalan";
-            //        cbjalan.SelectedIndex = -1;
-            //    }
-            //}
+     
 
             if (cbdusun.SelectedIndex >= 0)
             {
@@ -89,7 +81,6 @@ namespace pebeo.View
         {
 
             if (cbdusun.SelectedValue != null && int.TryParse(cbdusun.SelectedValue.ToString(), out int id_dusun))
-                //int id_dusun = Convert.ToInt32(cbdusun.SelectedValue);
                 cbdusun.DataSource = AlamatController.GetDusun();
             cbdusun.DisplayMember = "nama_dusun";
             cbdusun.ValueMember = "id_dusun";
@@ -97,8 +88,7 @@ namespace pebeo.View
 
             foreach (DataRowView item in cbdusun.Items)
             {
-                Console.WriteLine(item["nama_dusun"].ToString()); // atau MessageBox.Show
-
+                Console.WriteLine(item["nama_dusun"].ToString()); 
             }
 
             cbdusun.Refresh();
@@ -106,18 +96,7 @@ namespace pebeo.View
 
         private void btnregister_Click(object sender, EventArgs e)
         {
-            //RegisterAlamat registeralamat = new RegisterAlamat();
-            //registeralamat.Show();
-            //this.Hide();
-
-            //int idDusun = Convert.ToInt32(cbdusun.SelectedValue);
-            //int idJalan = Convert.ToInt32(cbjalan.SelectedValue);
-            //int nomor = Convert.ToInt32(cbnorumah.SelectedValue);
-
-            //Form1 login = new Form1();
-            //login.Show();
-            //this.Hide();
-
+           
             try
             {
                 if (cbnorumah.SelectedValue != null)

@@ -26,13 +26,12 @@ namespace pebeo.Controller
                             cmd.Parameters.AddWithValue("@noTelp", noTelp);
 
                             int rowsAffected = cmd.ExecuteNonQuery();
-                            return rowsAffected > 0; // true kalau berhasil
+                            return rowsAffected > 0; 
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Bisa ditampilkan ke log atau MessageBox kalau mau
                     Console.WriteLine("Error saat register warga: " + ex.Message);
                     return false;
                 }

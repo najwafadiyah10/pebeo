@@ -21,11 +21,6 @@ namespace pebeo.Models
                 NoTelepon = noTelp;
                 noRumah = norumah;
             }
-
-            //public override bool Login(string username, string password)
-            //{
-            //    return Username == username && password == password;
-            //}
         }
     }
 

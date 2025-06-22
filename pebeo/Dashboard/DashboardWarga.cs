@@ -46,15 +46,15 @@ namespace pebeo.Dashboard
 
         public void ShowControl(UserControl uc)
         {
-            panel2.Controls.Clear();      // kosongkan panel2
-            uc.Dock = DockStyle.Fill;     // biar full
-            panel2.Controls.Add(uc);      // tambahkan ke panel2
-            uc.BringToFront();            // tampilkan paling depan
+            panel2.Controls.Clear();    
+            uc.Dock = DockStyle.Fill;   
+            panel2.Controls.Add(uc);     
+            uc.BringToFront();           
         }
 
         private void btnsetorjadwal_Click(object sender, EventArgs e)
         {
-            Jadwal jadwal = new Jadwal();  // Buat instance user control
+            Jadwal jadwal = new Jadwal(); 
             ShowControl(jadwal);
         }
 

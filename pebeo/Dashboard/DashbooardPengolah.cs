@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-//using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -25,11 +24,11 @@ namespace pebeo.Dashboard
         }
         private void ShowControl(UserControl uc)
         {
-            panel2.Controls.Clear();      // kosongkan panel2
-            uc.Dock = DockStyle.Fill;     // biar full
-            panel2.Controls.Add(uc);      // tambahkan ke panel2
-            uc.BringToFront();            // tampilkan paling depan
-        }
+            panel2.Controls.Clear();
+            uc.Dock = DockStyle.Fill;
+            panel2.Controls.Add(uc);
+            uc.BringToFront();
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -51,6 +50,11 @@ namespace pebeo.Dashboard
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void DashbooardPengolah_Load(object sender, EventArgs e)
         {
 
         }

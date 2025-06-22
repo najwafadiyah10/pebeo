@@ -25,13 +25,13 @@ namespace pebeo.User_Control
                 using (var conn = new NpgsqlConnection(Database.connString))
                 {
                     conn.Open();
-                    string query = "SELECT * FROM setor_sampah"; // ganti kalau nama tabel beda
+                    string query = "SELECT * FROM setor_sampah"; 
                     using (var cmd = new NpgsqlCommand(query, conn))
                     {
                         var adapter = new NpgsqlDataAdapter(cmd);
                         var dt = new DataTable();
                         adapter.Fill(dt);
-                        dataGridView1.DataSource = dt; // ganti sesuai nama DataGridView kamu
+                        dataGridView1.DataSource = dt; 
                     }
                 }
             }

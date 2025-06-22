@@ -26,13 +26,13 @@ namespace pebeo.User_Control
                 using (var conn = new NpgsqlConnection(Database.connString))
                 {
                     conn.Open();
-                    string query = "SELECT * FROM view_jadwal_urut_hari"; // ganti kalau nama tabel beda
+                    string query = "SELECT * FROM view_jadwal_urut_hari"; 
                     using (var cmd = new NpgsqlCommand(query, conn))
                     {
                         var adapter = new NpgsqlDataAdapter(cmd);
                         var dt = new DataTable();
                         adapter.Fill(dt);
-                        dataGridView1.DataSource = dt; // ganti sesuai nama DataGridView kamu
+                        dataGridView1.DataSource = dt; 
                     }
                 }
             }
@@ -44,7 +44,7 @@ namespace pebeo.User_Control
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == 0) // misal kolom ke-0 itu tombol hapus
+            if (e.RowIndex >= 0 && e.ColumnIndex == 0) 
             {
                 int idJadwal = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["id_jadwal"].Value);
 
@@ -64,8 +64,8 @@ namespace pebeo.User_Control
                             }
                         }
 
-                        // Refresh data setelah hapus
-                        LoadData(); // buat method ini seperti Jadwal_Load isinya ambil data
+                        
+                        LoadData(); 
                     }
                     catch (Exception ex)
                     {
@@ -103,10 +103,9 @@ namespace pebeo.User_Control
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                // Ambil baris yang dipilih
                 DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
 
-                // Ambil id_jadwal dari baris itu
+                
                 int idJadwal = Convert.ToInt32(selectedRow.Cells["id_jadwal"].Value);
 
                 DialogResult confirm = MessageBox.Show("Yakin ingin menghapus data ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -126,7 +125,7 @@ namespace pebeo.User_Control
                             }
                         }
 
-                        // Refresh tabel
+                        
                         LoadData();
 
                         MessageBox.Show("Data berhasil dihapus.");
@@ -143,46 +142,7 @@ namespace pebeo.User_Control
             }
         }
 
-        //private void btntambah_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        using (var conn = new NpgsqlConnection(Database.connString))
-        //        {
-        //            conn.Open();
-        //            foreach (DataGridViewRow row in dataGridView1.Rows)
-        //            {
-        //                if (row.IsNewRow) continue;
-
-
-        //                // Karena View, kolom id_jadwal mungkin tidak bisa dideteksi sebagai null, jadi sebaiknya cek dengan cara lain
-        //                if (row.Cells["id_jadwal"].Value == null || string.IsNullOrEmpty(row.Cells["id_jadwal"].Value.ToString()))
-        //                {
-        //                    string hari = row.Cells["hari"].Value?.ToString();
-        //                    string jamStr = row.Cells["jam"].Value?.ToString();
-
-        //                    if (!string.IsNullOrEmpty(hari) && !string.IsNullOrEmpty(jamStr))
-        //                    {
-        //                        using (var cmd = new NpgsqlCommand("INSERT INTO jadwal_pengambilan (hari, jam) VALUES (@hari, @jam)", conn))
-        //                        {
-        //                            cmd.Parameters.AddWithValue("@hari", hari);
-        //                            cmd.Parameters.AddWithValue("@jam", TimeSpan.Parse(jamStr));
-        //                            cmd.ExecuteNonQuery();
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }
-
-        //        MessageBox.Show("Data berhasil ditambahkan.");
-        //        LoadData(); // reload dari View agar tetap urut
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Gagal menyimpan data: " + ex.Message);
-        //    }
-        //}
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -204,7 +164,7 @@ namespace pebeo.User_Control
                                 using (var cmd = new NpgsqlCommand("INSERT INTO jadwal_pengambilan (hari, jam) VALUES (@hari, @jam)", conn))
                                 {
                                     cmd.Parameters.AddWithValue("@hari", hari);
-                                    cmd.Parameters.AddWithValue("@jam", jamStr); // <-- pakai string langsung
+                                    cmd.Parameters.AddWithValue("@jam", jamStr); 
                                     cmd.ExecuteNonQuery();
                                 }
                             }
@@ -213,7 +173,7 @@ namespace pebeo.User_Control
                 }
 
                 MessageBox.Show("Data berhasil ditambahkan.");
-                LoadData(); // reload dari View agar tetap urut
+                LoadData(); 
             }
             catch (Exception ex)
             {

@@ -57,8 +57,6 @@ namespace pebeo.View
             string nama = txtNama.Text;
             string noTelp = txtTelepon.Text;
 
-            // Jangan simpan ke database di sini!
-            // Langsung lanjut ke form input alamat
 
             if (string.IsNullOrWhiteSpace(username) ||
             string.IsNullOrWhiteSpace(password) ||
@@ -75,14 +73,12 @@ namespace pebeo.View
                 return;
             }
 
-            // Validasi: password harus mengandung minimal satu angka
             if (!password.Any(char.IsDigit))
             {
                 MessageBox.Show("Password harus mengandung minimal satu angka!");
                 return;
             }
 
-            // Validasi: no HP tidak boleh mengandung huruf
             if (noTelp.Any(char.IsLetter))
             {
                 MessageBox.Show("Nomor HP hanya boleh berisi angka!");
@@ -92,57 +88,8 @@ namespace pebeo.View
             var registerAlamat = new RegisterAlamat(username, password, nama, noTelp);
             registerAlamat.Show();
             this.Hide();
-
-            //string username = txtUsername.Text;
-            //string password = txtPassword.Text;
-            //string nama = txtNama.Text;
-            //string noTelp = txtTelepon.Text;
-
-            //bool sukses = WargaController.RegisterWarga(username, password, nama, noTelp);
-
-            //if (sukses)
-            //{
-            //    MessageBox.Show("Registrasi berhasil!");
-
-            //    // Lanjut ke alamat
-            //    var registerAlamat = new RegisterAlamat(username, password, nama, noTelp);
-            //    registerAlamat.Show();
-            //    this.Hide();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Registrasi gagal. Silakan coba lagi.");
-            //}
         }
             
-            // Ambil input user
-            //string username = txtUsername.Text;
-            //string password = txtPassword.Text;
-            //string nama = txtNama.Text;
-            //string noTelp = txtTelepon.Text;
-
-            //// Kirim data ke form RegisterAlamat
-            ////RegisterAlamat formAlamat = new RegisterAlamat(username, password, nama, noTelp);
-            ////formAlamat.Show();
-            ////this.Hide();
-
-            //var registerAlamat = new RegisterAlamat(username, password, nama, noTelp);
-            //registerAlamat.Show();
-            //this.Hide();
-
-
-
-
-            //if (controller.RegisterWarga(warga))
-            //{
-            //    MessageBox.Show("Registrasi berhasil!");
-            //    this.Close(); // atau buka LoginForm
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Gagal registrasi.");
-            //}
-        
 
         private void Register_Load(object sender, EventArgs e)
         {

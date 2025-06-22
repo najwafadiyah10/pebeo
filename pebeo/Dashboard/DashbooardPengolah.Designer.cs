@@ -118,6 +118,7 @@
             Controls.Add(panel1);
             Name = "DashbooardPengolah";
             Text = "DashbooardPengolah";
+            Load += DashbooardPengolah_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }

@@ -32,7 +32,6 @@ namespace pebeo.User_Control
 
                     UpdateStatusKeDatabase(idSetor, idStatusBaru);
 
-                    // (Opsional) Update kolom teks kalau kamu masih pakai kolom "status"
                     if (dataGridView1.Columns.Contains("status"))
                     {
                         dataGridView1.Rows[e.RowIndex].Cells["status"].Value = GetStatusTextById(idStatusBaru);
@@ -60,18 +59,18 @@ namespace pebeo.User_Control
                     cmd.Parameters.AddWithValue("@id_setor", idSetor);
                     cmd.Parameters.AddWithValue("@status", idStatus);
 
-                    int rowsAffected = cmd.ExecuteNonQuery(); // debug log opsional
+                    int rowsAffected = cmd.ExecuteNonQuery();
                     Console.WriteLine($"Updated rows: {rowsAffected}");
                 }
             }
         }
 
-        
+
 
 
         private void LoadData()
         {
-            LoadData(null, null); // memanggil versi yang pakai parameter
+            LoadData(null, null); 
         }
 
         private void LoadData(object sender, EventArgs e)
@@ -113,13 +112,11 @@ namespace pebeo.User_Control
                         adapter.Fill(dt);
                         dataGridView1.DataSource = dt;
 
-                        // Hapus kolom jika sudah ada
                         if (dataGridView1.Columns.Contains("statusComboBox"))
                         {
                             dataGridView1.Columns.Remove("statusComboBox");
                         }
 
-                        // Ambil data status dari tabel status_pengambilan
                         var dtStatus = new DataTable();
                         using (var statusCmd = new NpgsqlCommand("SELECT id_status, status FROM status_pengambilan", conn))
                         {
@@ -127,14 +124,13 @@ namespace pebeo.User_Control
                             statusAdapter.Fill(dtStatus);
                         }
 
-                        // Tambahkan kolom ComboBox yang bind ke database
                         DataGridViewComboBoxColumn comboBoxColumn = new DataGridViewComboBoxColumn();
                         comboBoxColumn.HeaderText = "Edit Status";
                         comboBoxColumn.Name = "statusComboBox";
                         comboBoxColumn.DataSource = dtStatus;
                         comboBoxColumn.DisplayMember = "status";
                         comboBoxColumn.ValueMember = "id_status";
-                        comboBoxColumn.DataPropertyName = "id_status"; // supaya otomatis sinkron
+                        comboBoxColumn.DataPropertyName = "id_status"; 
                         dataGridView1.Columns.Add(comboBoxColumn);
 
                         dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
@@ -182,26 +178,30 @@ namespace pebeo.User_Control
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                // Pastikan baris tidak kosong (baris baru user)
+                
                 if (row.IsNewRow) continue;
 
-                // Ambil nilai id_setor dari kolom tersembunyi atau visible
+                
                 object idSetorObj = row.Cells["id_setor"].Value;
                 object statusComboObj = row.Cells["statuscombobox"].Value;
 
                 if (idSetorObj == null || statusComboObj == null) continue;
 
                 int idSetor = Convert.ToInt32(idSetorObj);
-                int idStatus = Convert.ToInt32(statusComboObj); // nilai Value dari ComboBox
+                int idStatus = Convert.ToInt32(statusComboObj); 
 
-                // Panggil method update
+                
                 UpdateStatusKeDatabase(idSetor, idStatus);
             }
 
-            // Refresh data setelah update
+           
             LoadData();
             MessageBox.Show("Status berhasil diperbarui!", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
-    }
+}
