@@ -130,12 +130,21 @@ namespace pebeo
                         {
                             if (reader2.HasRows)
                             {
-                                MessageBox.Show("Login berhasil sebagai PENGOLAH");
+                                Pengolah pengolah = new Pengolah(username, password);
+
+
+                                pengolah.TampilkanPeran();
+
+
+                                MessageBox.Show($"Login berhasil sebagai Pengolah");
+
+
                                 DashbooardPengolah formPengolah = new DashbooardPengolah();
                                 formPengolah.Show();
                                 this.Hide();
                                 return;
                             }
+
                         }
                     }
 
@@ -147,6 +156,7 @@ namespace pebeo
                 MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
     }
+
+    
 }
